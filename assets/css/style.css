@@ -1,0 +1,14 @@
+body {
+	background-image: url("../images/nickhillier.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+h1 {
+    font-size: 72px;
+    color: aliceblue;
+    padding: 20px;
+    text-align: center;
+}
+.button {
+
+}

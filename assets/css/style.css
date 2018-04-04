@@ -13,13 +13,25 @@ h2{
     color: green;
     padding: 20px;
     text-align: center;
-
 }
+.container-fluid {
+    position: center;
+    margin-left: 10em ;
+    margin-left: 10em ;
+    padding: 3em;
+}
+
+
 .form-group {
-    text-align: center;
+    /* text-align: center; */
     color: black;
     font-style: inherit;
 }
-.button {
 
+input {
+    margin: auto
+
+}
+.button {
+position: center;
 }

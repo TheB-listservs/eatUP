@@ -17,8 +17,7 @@ var database = firebase.database();
 database.ref("/groups").on("child_added", function (grabData) {
     var opt = document.createElement('option');
     var groupId = grabData.key; 
-    var groups = grabData.val().groupName;
-    console.log(groups); 
+    var groups = grabData.val().groupName; 
     var newGroupDiv = $(opt).addClass("item").attr("data-id", groupId).html(groups);
     $("#group-menu").append(newGroupDiv)
 
@@ -28,23 +27,14 @@ database.ref("/groups").on("child_added", function (grabData) {
         event.preventDefault();
         console.log("you clicked submit!");
         var enteredUserName = $("#name").val();
-        var selectedGroup = $("#group").val();
+        var selectedGroupId = $("#group-menu").find(":selected").attr("data-id") 
+        
         if (!enteredUserName) {
             console.log("no name entered");
             return;
         }
-
-        if (!selectedGroup) {
-            console.log("no name entered");
-            return;
-        }
-
-        var newPush = database.ref("/groups").push({
-            groupName: selectedGroup
-        })
-
-        var id = newPush.key;
-        var newRef = selectedGroup + id + "/users";
+        
+        var newRef = "groups/" + selectedGroupId + "/users";
 
         var user = database.ref(newRef).push({
             name: enteredUserName

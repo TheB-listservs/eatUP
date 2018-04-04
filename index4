@@ -19,9 +19,8 @@
 <h1>eatUP</h1>
 
     <div role="button" class="ui one column centered grid">
-        <div class="ui massive button - green">   JOIN  group </div></div>
+        <div class="ui massive button - green"> [ JOIN ] group </div></div>
     <div class="ui divider"></div>
-    <hr>
     <div role="button" class="ui one column centered grid">
         <div class="ui massive button - primary"> + ADD group </div></div>
     </div>\

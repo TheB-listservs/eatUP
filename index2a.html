@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,48 +8,54 @@
     <title>eatUP-ADD</title>
 
     <!-- link to semantic-ui -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
 
     <!-- Link to CSS -->
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 </head>
+
 <body>
-        <h1>eatUP</h1>
-        <h1>ADD group</h1>
+    <h1>eatUP</h1>
+    <h1>ADD group</h1>
 
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-6">
-                    <form id="form">
-                            <div class="ui form">
-    <!-- Group Name-->
-                                <div class="field">
-                                    <label></label>
-                                    <input type="text" placeholder="GROUP NAME HERE">
-                                </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <form id="form">
+                    <div class="ui form">
+                        <!-- Group Name-->
+                        <div class="field">
+                            <label></label>
+                            <input id="group-name" type="text" placeholder="GROUP NAME HERE">
+                        </div>
 
-    <!-- YOUR Name-->
+                        <!-- YOUR Name-->
 
-                                <div class="field">
-                                        <label></label>
-                                        <input type="text" placeholder="YOUR NAME HERE">
-                                </div>
+                        <div class="field">
+                            <label></label>
+                            <input id="name" type="text" placeholder="YOUR NAME HERE">
+                        </div>
+                    </div>
+            </div>
         </div>
-        </div>
-        </div>
-        </div>
+    </div>
     <br>
     <BR>
     <div role="button" class="ui one column centered grid">
-        <div class="ui massive button - primary"> SUBMIT </div></div>
+        <div id="submit-button" class="ui massive button - primary"> SUBMIT </div>
     </div>
-</div>
-</div>
-</div>
-      <!-- Code -->
-
+    </div>
+    </div>
+    </div>
+    </div>
+    <!-- Code -->
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <!-- Link to JS -->
+    <script type="text/javascript" src="page2a.js"></script>
 </body>
+
 </html>

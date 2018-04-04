@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,26 +8,39 @@
     <title>eatUP</title>
 
     <!-- link to semantic-ui -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
 
     <!-- Link to CSS -->
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 </head>
+
 <body>
-<h1>eatUP</h1>
+    <h1>eatUP</h1>
 
     <div role="button" class="ui one column centered grid">
-        <div class="ui massive button - green">   JOIN  group </div></div>
+        <div id="group-button" class="ui massive button - green"> JOIN group </div>
+    </div>
     <div class="ui divider"></div>
     <hr>
     <div role="button" class="ui one column centered grid">
-        <div class="ui massive button - primary"> + ADD group </div></div>
-    </div>\
+        <div id="add-group" class="ui massive button - primary"> + ADD group </div>
+    </div>
+    </div>
 
-      <!-- Code -->
-
+    <!-- Code -->
+    <!-- Link to JQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript">
+        $("#group-button").on("click", function () {
+            location.href = "index2b.html";
+        });
+        $("#add-group").on("click", function () {
+            location.href = "index2a.html";
+        });
+    </script>
 </body>
+
 </html>

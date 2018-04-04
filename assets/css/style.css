@@ -9,6 +9,17 @@ h1 {
     padding: 20px;
     text-align: center;
 }
+h2{
+    color: green;
+    padding: 20px;
+    text-align: center;
+
+}
+.form-group {
+    text-align: center;
+    color: black;
+    font-style: inherit;
+}
 .button {
 
 }

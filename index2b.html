@@ -19,46 +19,43 @@
 
 <body>
     <h1>eatUP</h1>
-    <h1>JOIN group</h1>
 
-    <div class="ui centered grid">
-        <div class="center aligned column">
+    <h2>JOIN group</h2>
 
-            <!-- Group Dropdown-->
-            <!-- Group Dropdown-->
-            <select id="group-menu" name="Groups">
-                <div class="ui simple dropdown item">
+    <div role="container" class="one column centered grid">
 
-                    <i class="dropdown icon"></i>
-                    <div class="menu">
+        <!-- Group Dropdown-->
+        <div role="dropdown" class="ui centered grid">
 
-                    </div>
-                </div>
+            <select id="group-menu" class="ui selection dropdown">
+                    <h3><i class="dropdown icon"></i> Search Parameters</h3>
+                        class="menu"></div>
             </select>
         </div>
+
     </div>
-    <br>
+
+<br>
+
     <!-- YOUR Name-->
-    <div class="ui form">
+
+    <div class="ui fluid icon input">
         <div class="field">
-            <label></label>
             <input id="name" type="text" placeholder="YOUR NAME HERE">
         </div>
     </div>
-    </div>
-    </div>
-    </div>
-    </div>
 
-    <br>
+<br>
+<br>
 
-    <div role=" button" class="ui one column centered grid">
+    <!-- Submit-->
+    <div role="button" class="ui one column centered grid">
         <div id="submit-button" class="ui massive button - green"> SUBMIT</div>
     </div>
 
-    <!-- Code -->
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
     <!-- Link to JS -->
     <script type="text/javascript" src="page2b.js"></script>
 
@@ -69,6 +66,6 @@
             location.href = "index3.html";
         });
     </script>
-</body>
 
+</body>
 </html>

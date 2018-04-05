@@ -19,44 +19,40 @@
 
 <body>
     <h1>eatUP</h1>
-    <h1>ADD group</h1>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6">
-                <form id="form">
-                    <div class="ui form">
-                        <!-- Group Name-->
-                        <div class="field">
-                            <label></label>
-                            <input id="group-name" type="text" placeholder="GROUP NAME HERE">
-                        </div>
+    <h2>ADD group</h2>
 
-                        <!-- YOUR Name-->
+    <div role="container" class="one column centered grid">
+        <form id="form">
+            <div class="ui fluid icon input">
 
-                        <div class="field">
-                            <label></label>
-                            <input id="name" type="text" placeholder="YOUR NAME HERE">
-                        </div>
-                    </div>
+    <!-- Group Name-->
+                <div class="field">
+                    <input id="group-name" type="text" placeholder="GROUP NAME HERE">
+                </div>
+
+    <!-- YOUR Name-->
+                <div class="field">
+                    <input id="name" type="text" placeholder="YOUR NAME HERE">
+                </div>
+
             </div>
-        </div>
+        </form>
     </div>
-    <br>
-    <BR>
+
+<br>
+<br>
+
+    <!-- Submit-->
     <div role="button" class="ui one column centered grid">
         <div id="submit-button" class="ui massive button - primary"> SUBMIT </div>
     </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    <!-- Code -->
+
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
     <!-- Link to JS -->
     <script type="text/javascript" src="page2a.js"></script>
-
 
     <!-- Link to JQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
@@ -65,6 +61,6 @@
             location.href = "index3.html";
         });
     </script>
-</body>
 
+</body>
 </html>

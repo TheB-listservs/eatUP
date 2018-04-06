@@ -30,18 +30,27 @@ $("#submit-button").on("click", function () {
     var newPush = database.ref("/groups").push({
         groupName: enteredGroupName
     })
-    var id = newPush.key;
-    var newRef = "/groups/" + id + "/users";
+    var groupID = newPush.key;
+    var newRef = "/groups/" + groupID + "/users";
 
     var user = database.ref(newRef).push({
         name: enteredUserName
     });
     userID = user.key;
     console.log("my user id:", userID);
-    console.log("your group id is: ", id);
-    console.log("hold on to this, you'll need it");
+    console.log("your group id is: ", groupID);
+
+    //set User ID and Group ID to Local storage
+    sessionStorage.setItem("storage-userName", enteredUserName);
+    sessionStorage.setItem("storage-groupName", enteredGroupName);
+    sessionStorage.setItem("storage-userID", userID);
+    sessionStorage.setItem("storage-groupID", groupID);
 
 
+
+    //move to page 3
+    //location.href = "./index3.html";
+    location.href = "./googlemaps-api-test3.html";
 
     // database.ref().once('value').then(function(snapshot){
     //     var grpname = snapshot.child("groups").child(id).child("groupName").val();

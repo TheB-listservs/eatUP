@@ -10,12 +10,22 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 
+//get userID and groupID from session Storage
+var userID = sessionStorage.getItem("storage-userID");
+var groupID = sessionStorage.getItem("storage-groupID");
+console.log("user ID: ", userID);
+console.log("group ID: ", groupID);
+groupID = "-L9IfSXbpoKE3ACC670_"
+
+//other variables
+
 //==============================================================
 //====================Database Query==========================
 //===================for page 4==========================
 //==============================================================
 var queryRef = "groups/" + groupID + "/users";
 var locationArray = [];
+console.log("location Array start value: ", locationArray);
 database.ref(queryRef).orderByKey().on("child_added", function(snapshot) {
     console.log(snapshot.val());
     
@@ -23,9 +33,11 @@ database.ref(queryRef).orderByKey().on("child_added", function(snapshot) {
     console.log(snapshot.val().location);
     var locationObj = snapshot.val().location;
     var coords = JSON.parse(locationObj);
-    console.log(coords);
-    console.log(coords.lat)
+    //console.log(coords);
+    //console.log(coords.lat)
     locationArray.push(coords);
+    console.log("locationArray: ", locationArray)
+    console.log("locationArray length: ", locationArray.length)
 
     var centerLocation = findCenter(locationArray);
     centerMarker.setPosition(centerLocation);
@@ -56,7 +68,29 @@ function findCenter(locations){
         lat: latAvg,
         lng: lngAvg
     }
-    console.log(center);
+    console.log("findCenter center: ",center);
     return center;
+    console.log("end find cneter function")
 
 }
+
+//==============================================================
+//====================Initialize Map==========================
+//==============================================================
+function initMap() {
+    var chicago = {lat: 41.896, lng: -87.621};
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 12,
+        center: chicago
+    });
+    // var marker = new google.maps.Marker({
+    //     position: chicago,
+    //     map: map
+    // });
+
+    centerMarker = new google.maps.Marker({
+            map: map
+        });
+
+}
+

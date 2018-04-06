@@ -6,28 +6,34 @@ body {
 h1 {
     font-size: 72px;
     color: aliceblue;
-    padding: 20px;
+    padding-top: 20px;
     text-align: center;
 }
-h2{
-    color: green;
-    padding: 20px;
+
+h2 {
+    font-size: 56px;
+    color: red;
+    padding-bottom: 10px;
     text-align: center;
 }
-.container-fluid {
+
+.container {
     position: center;
-    margin-left: 10em ;
-    margin-left: 10em ;
+    margin-left: auto ;
+    margin-right: auto ;
     padding: 3em;
 }
 
-
-.form-group {
-    /* text-align: center; */
-    color: black;
-    font-style: inherit;
+.field {
+    text-align: center;
+    padding: 3px;
 }
 
+.dropdown {
+    text-align: center;
+    padding: 3px;
+}
+.select
 input {
     margin: auto
 

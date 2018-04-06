@@ -50,7 +50,7 @@ $("#submit-button").on("click", function () {
 
     //move to page 3
     //location.href = "./index3.html";
-    location.href = "./googlemaps-api-test3.html";
+    location.href = "./backend-page3.html";
 
 });
 

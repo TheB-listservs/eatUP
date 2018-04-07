@@ -34,10 +34,18 @@ width: 172px;
 
 .menu {
     background-color: black;
-    color: aliceblue
+    color: aliceblue;
+}
+
+.mapdiv {
+    position: fixed;
+    height: 100%;
+    width:100%;
+    top: 36px;
+    z-index: -1;
 }
 
 .map {
-    background-repeat: no-repeat;
-    background-size: cover; 
+    height: 100%;
+    width:100%;
 }

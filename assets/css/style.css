@@ -20,9 +20,8 @@ h2 {
 .field {
     text-align: center;
     padding: 3px;
-    min-width: 205px;
 }
-
+;
 .select
 input {
     margin: auto
@@ -30,4 +29,15 @@ input {
 }
 .button {
 position: center;
+width: 172px;
+}
+
+.menu {
+    background-color: black;
+    color: aliceblue
+}
+
+.map {
+    background-repeat: no-repeat;
+    background-size: cover; 
 }

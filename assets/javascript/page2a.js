@@ -1,6 +1,9 @@
-var userID;
-console.log("user id:", userID)
-// Initialize Firebase
+//just to make sure that proper js file is linked:
+console.log("Inside page-2a JS!!!")
+
+//==================================================
+// ===============Initialize Firebase===============
+//==================================================
 var config = {
     apiKey: "AIzaSyCZSpOhRVPzvxqwV8Ve9GOVqk8LmqKY1yU",
     authDomain: "eatu-f3ea8.firebaseapp.com",
@@ -10,9 +13,17 @@ var config = {
     messagingSenderId: "768020933384"
 };
 firebase.initializeApp(config);
-
 var database = firebase.database();
 
+//==================================================
+// ================Global Variables=================
+//==================================================
+var userID;
+
+
+//==================================================
+// ==================Submit Button==================
+//==================================================
 $("#submit-button").on("click", function () {
     event.preventDefault();
     console.log("you clicked submit!");
@@ -46,19 +57,8 @@ $("#submit-button").on("click", function () {
     sessionStorage.setItem("storage-userID", userID);
     sessionStorage.setItem("storage-groupID", groupID);
 
-
-
-    //move to page 3
+    //Go to page 3
     location.href = "./index3.html";
     //location.href = "./backend-page3.html";
-
-    // database.ref().once('value').then(function(snapshot){
-    //     var grpname = snapshot.child("groups").child(id).child("groupName").val();
-    //     console.log(grpname);
-    // });
-
-
-
-
 
 });

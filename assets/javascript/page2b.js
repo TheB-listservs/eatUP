@@ -1,6 +1,9 @@
-var userID;
-console.log("user id:", userID)
-// Initialize Firebase
+//just to make sure that proper js file is linked:
+console.log("Inside page-2b JS!!!")
+
+//==================================================
+// ===============Initialize Firebase===============
+//==================================================
 var config = {
     apiKey: "AIzaSyCZSpOhRVPzvxqwV8Ve9GOVqk8LmqKY1yU",
     authDomain: "eatu-f3ea8.firebaseapp.com",
@@ -10,9 +13,17 @@ var config = {
     messagingSenderId: "768020933384"
 };
 firebase.initializeApp(config);
-
 var database = firebase.database();
 
+//==================================================
+// ================Global Variables=================
+//==================================================
+var userID;
+
+
+//==================================================
+// ===========Populating Drop Down Menu=============
+//==================================================
 // grabbing the groups in firebase and adding them to the drop down
 database.ref("/groups").on("child_added", function (grabData) {
     var opt = document.createElement('option');
@@ -23,6 +34,9 @@ database.ref("/groups").on("child_added", function (grabData) {
 
 });
 
+//==================================================
+// ==================Submit Button==================
+//==================================================
 //entering a name and selecting a group on submit button click
 $("#submit-button").on("click", function () {
     event.preventDefault();
@@ -37,7 +51,6 @@ $("#submit-button").on("click", function () {
     }
     
     var newRef = "groups/" + selectedGroupId + "/users";
-
     var user = database.ref(newRef).push({
         name: enteredUserName
     });
@@ -50,7 +63,7 @@ $("#submit-button").on("click", function () {
     sessionStorage.setItem("storage-groupName", selectedGroupName);
 
 
-    //move to page 3
+    //Go to page 3
     location.href = "./index3.html";
     //location.href = "./backend-page3.html";
 

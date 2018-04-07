@@ -1,5 +1,5 @@
 //just to make sure that proper js file is linked:
-console.log("Inside page3 JS!!!")
+console.log("Inside page-3 JS!!!")
 
 //==================================================
 // ===============Initialize Firebase===============
@@ -20,6 +20,14 @@ var database = firebase.database();
 //==================================================
 var coords;
 
+var userID = sessionStorage.getItem("storage-userID");
+var userName = sessionStorage.getItem("storage-userName");
+var groupID = sessionStorage.getItem("storage-groupID");
+var groupName = sessionStorage.getItem("storage-groupName");
+console.log("user Name: ", userName);
+console.log("user ID: ", userID);
+console.log("group Name: ", groupName);
+console.log("group ID: ", groupID);
 
 //==================================================
 // =============Initialize Google Maps==============
@@ -112,15 +120,10 @@ function initAutocomplete() {
     });
 }
 
-var userID = sessionStorage.getItem("storage-userID");
-var userName = sessionStorage.getItem("storage-userName");
-var groupID = sessionStorage.getItem("storage-groupID");
-var groupName = sessionStorage.getItem("storage-groupName");
-console.log("user Name: ", userName);
-console.log("user ID: ", userID);
-console.log("group Name: ", groupName);
-console.log("group ID: ", groupID);
 
+//==================================================
+// ==================Submit Button==================
+//==================================================
 $("#submit-button").on("click", function(){
     event.preventDefault();
     console.log("EVENT: you clicked submit!");
@@ -141,6 +144,9 @@ $("#submit-button").on("click", function(){
     database.ref(newRef).update({
         location: coordsString
     });
+
+    //Go to page 4
+    location.href = "./index4.html";
 });
 
 //==============================================================

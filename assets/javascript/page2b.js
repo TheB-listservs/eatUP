@@ -29,6 +29,7 @@ $("#submit-button").on("click", function () {
     console.log("you clicked submit!");
     var enteredUserName = $("#name").val();
     var selectedGroupId = $("#group-menu").find(":selected").attr("data-id") 
+    var selectedGroupName = $("#group-menu").find(":selected").html();
     
     if (!enteredUserName) {
         console.log("no name entered");
@@ -46,6 +47,7 @@ $("#submit-button").on("click", function () {
     sessionStorage.setItem("storage-userName", enteredUserName);
     sessionStorage.setItem("storage-userID", userID);
     sessionStorage.setItem("storage-groupID", selectedGroupId);
+    sessionStorage.setItem("storage-groupName", selectedGroupName);
 
 
     //move to page 3

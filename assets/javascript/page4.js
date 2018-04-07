@@ -1,3 +1,4 @@
+console.log("we are in page4 JS!!!")
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyCZSpOhRVPzvxqwV8Ve9GOVqk8LmqKY1yU",

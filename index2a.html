@@ -18,46 +18,58 @@
 </head>
 
 <body>
-    <h1>eatUP</h1>
+    <div class="ui top fixed inverted menu">
+            <a class="item">Main</a>
+            <a class="item">JOIN group</a>
+            <a class="item">ADD group</a>
+            <a class="item">VIEW group</a>
+    </div>
 
+    <h1>eatUP</h1>
     <h2>ADD group</h2>
 
     <div role="container" class="one column centered grid">
-        <form id="form">
-            <div class="ui fluid icon input">
+            <form id="form">
+                <div class="ui fluid icon input">
 
-    <!-- Group Name-->
-                <div class="field">
-                    <input id="group-name" type="text" placeholder="GROUP NAME HERE">
-                </div
+        <!-- Group Name-->
+                    <div class="field">
+                        <input id="group-name" type="text" placeholder="GROUP NAME HERE">
+                    </div>
 
-    <!-- YOUR Name-->
-                <div class="field">
-                    <input id="name" type="text" placeholder="YOUR NAME HERE">
+        <!-- YOUR Name-->
+                    <div class="field">
+                        <input id="name" type="text" placeholder="YOUR NAME HERE">
+                    </div>
+
                 </div>
+            </form>
+        </div>
 
-            </div>
-        </form>
-    </div>
+    <br>
+    <br>
 
-<br>
-<br>
-
-    <!-- Submit-->
     <div role="button" class="ui one column centered grid">
         <div id="submit-button" class="ui massive button - primary"> SUBMIT </div>
     </div>
-
-
+    </div>
+    </div>
+    </div>
+    </div>
     <!-- Code -->
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <!-- Link to JS -->
+    <script type="text/javascript" src="page2a.js"></script>
+
+
     <!-- Link to JQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
-    <!-- Link to JS -->
-    <script type="text/javascript" src="./assets/javascript/page2a.js"></script>
-
+    <script type="text/javascript">
+        $("#submit-button").on("click", function () {
+            location.href = "index3.html";
+        });
+    </script>
 </body>
 
-</body>
 </html>

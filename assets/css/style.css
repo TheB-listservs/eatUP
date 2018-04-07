@@ -47,7 +47,7 @@ width: 172px;
 }
 
 .mapdiv {
-    position: relative;
+    /* position: relative; */
     height:97%;
     width:100%;
     top: 36px;

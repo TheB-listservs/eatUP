@@ -49,8 +49,8 @@ $("#submit-button").on("click", function () {
 
 
     //move to page 3
-    //location.href = "./index3.html";
-    location.href = "./backend-page3.html";
+    location.href = "./index3.html";
+    //location.href = "./backend-page3.html";
 
     // database.ref().once('value').then(function(snapshot){
     //     var grpname = snapshot.child("groups").child(id).child("groupName").val();

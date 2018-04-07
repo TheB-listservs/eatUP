@@ -22,13 +22,14 @@ h2 {
     padding: 3px;
 }
 ;
-.select
-input {
+.select input {
     margin: auto
-
 }
+
 .button {
-position: center;
+position: absolute;
+bottom:20px;
+left: 40%;
 width: 172px;
 }
 
@@ -37,9 +38,17 @@ width: 172px;
     color: aliceblue;
 }
 
+#restaurant-list {
+    top:35.31px;
+}
+
+#group-member-list {
+    top:35.31px;
+}
+
 .mapdiv {
-    position: fixed;
-    height: 100%;
+    position: relative;
+    height:97%;
     width:100%;
     top: 36px;
     z-index: -1;
@@ -48,4 +57,5 @@ width: 172px;
 .map {
     height: 100%;
     width:100%;
+    background-size: cover;
 }

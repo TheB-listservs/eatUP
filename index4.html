@@ -15,7 +15,7 @@
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
     <!-- Link to CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style4.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 </head>
 <body>
@@ -28,7 +28,7 @@
     </div>
     <div class="mapdiv">
         <div id="map" class="map"></div><br>
-    </div>  
+    </div>
 
   <h1>eatUP</h1>
 
@@ -38,7 +38,7 @@
       <div class="center aligned column">
 
   <!-- RESULTS -->
-  <div class="ui vertical menu">
+  <div id="restaurant-list" class="ui vertical menu">
       <a class="item">
         <h4 class="ui header">Rest 1</h4>
         <p>yadda yadda yadda</p>
@@ -61,14 +61,15 @@
           </a>
     </div>
 
-    <div class="ui right fixed vertical menu">
+    <div id="group-member-list" class="ui right fixed vertical menu">
         <div class="item">
           Group Members
         </div>
         <a class="item">Name1</a>
         <a class="item">Name2</a>
         <a class="item">Name3</a>
-      </div>
+    </div>
+
   <!-- Choice -->
   <div role="container" class="one column centered grid"></div>
   <div class="ui fluid icon input">

@@ -11,10 +11,12 @@ h1 {
 }
 
 h2 {
-    font-size: 56px;
-    color: red;
+    font-size: 16px;
+    color: silver;
+    /*padding-bottom: 10px;*/
+    text-align: left;
+    padding-top: -20px;
     padding-bottom: 10px;
-    text-align: center;
 }
 
 .field {
@@ -27,10 +29,10 @@ h2 {
 }
 
 .button {
-position: absolute;
-bottom:20px;
-left: 40%;
-width: 172px;
+    position: absolute;
+    bottom:20px;
+    left: 42%;
+    width: 172px;
 }
 
 .menu {
@@ -39,23 +41,32 @@ width: 172px;
 }
 
 #restaurant-list {
-    top:35.31px;
+    top:35.32px;
 }
 
 #group-member-list {
-    top:35.31px;
+    top:35.32px;
 }
 
 .mapdiv {
-    /* position: relative; */
-    height:97%;
+    position: inherit;
+    height:100%;
     width:100%;
-    top: 36px;
+    top: 33px;
+    bottom: 0;
     z-index: -1;
 }
 
 .map {
     height: 100%;
     width:100%;
-    background-size: cover;
+}
+
+#pac-input {
+    bottom: 100px;
+    position: absolute;
+    left: 43.3%;
+    height: 37px;
+    widows: 202px;
+    z-index: 1;
 }

@@ -23,36 +23,32 @@
 <body>
 
     <div class="ui top fixed inverted menu">
-            <a class="item" href="./index.html">eatUP</a>
+            <a class="item" href="./index.html"><i class="angle double up icon"></i><b>eatUP</b></a>
             <a class="active item" href="./index2b.html">JOIN group</a>
             <a class="item" href="./index2a.html">ADD group</a>
             <a class="item" href="./index2c.html">VIEW group</a>
     </div>
 
+    <div class="ui hidden divider"></div>
+
+    <div class="ui container">
+
         <!-- Group Dropdown-->
-        <class="ui center vertical aligned segment">
-        <div class="ui fluid icon input">
-                <div class="field">
-                    <select id="group-menu" class="ui dropdown centered">
-                    </select>
-                </div>
-            </div>
+        <div class="ui fluid icon input aligned field">
+            <select id="group-menu" class="ui dropdown centered">
+            </select>
+        </div>
 
         <!-- YOUR Name-->
-        <div class="ui fluid icon input">
-            <div class="field">
-                <input id="name" type="text" placeholder="YOUR NAME HERE">
-            </div>
+        <div class="ui fluid icon input aligned field">
+            <input id="name" type="text" placeholder="YOUR NAME">
+        </div>
+
+        <!-- Submit-->
+        <div class="ui aligned segment">
+            <div id="submit-button" class="ui massive blue button"> SUBMIT</div>
         </div>
     </div>
-    <br>
-    <br>
-
-    <div role=" button" class="ui one column centered grid">
-        <div id="submit-button" class="ui massive button - green"> SUBMIT</div>
-    </div>
-
-    <!-- Code -->
 
     <!-- Link to JS -->
     <script type="text/javascript" src="./assets/javascript/page2b.js"></script>

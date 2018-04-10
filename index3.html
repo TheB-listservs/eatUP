@@ -16,23 +16,23 @@
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
     <!-- Link to CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/normalize.css">
 
 </head>
 <body>
 
-    <div class="ui top fixed inverted tabular menu">
-            <a class="item" href="./index.html"><b>eatUP</b></a>
-            <a class="item" href="./index2b.html">JOIN group</a>
-            <a class="item" href="./index2a.html">ADD group</a>
-            <a class="item" href="./index2c.html">VIEW group</a>
-            <h2> L O C A T I O N </h2>
+    <div class="ui top fixed inverted menu">
+        <a class="item" href="./index.html"><i class="angle double up icon"></i><b>eatUP</b></a>
+        <a class="item" href="./index2b.html">JOIN group</a>
+        <a class="item" href="./index2a.html">ADD group</a>
+        <a class="item" href="./index2c.html">VIEW group</a>
+        <a class="active item" href="./index3.html">L O C A T I O N</a>
     </div>
 
     <div class="mapdiv">
-        <input id="pac-input" class="controls" type="text" placeholder="Location Search"><i class="search icon"></i>
-        <div id="map" class="map"></div>
-
-        <div id="submit-button" class="ui massive button - green"> SUBMIT </div>
+            <input id="pac-input" class="ui controls" type="text" placeholder="Location Search">
+                <div id="map" class="ui map"></div>
+                    <div id="submit-button" class="ui massive black button"> SUBMIT</div>
     </div>
 
     <!-- Google Maps -->

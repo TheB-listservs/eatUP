@@ -151,12 +151,11 @@ function initMap() {
                 var restaurantLat = parseFloat(response.nearby_restaurants[i].restaurant.location.latitude);
                 var restaurantLng = parseFloat(response.nearby_restaurants[i].restaurant.location.longitude);
                 
-                var h4Name = $("<h4>").html((i+1)+") "+restaurantName); 
+                var h4Name = $("<h4>").html((i+1)+") "+restaurantName).addClass("ui header"); 
                 var pAddress = $("<p>").html(restaurantAddress);  
                 var pType = $("<p>").html(restaurantType); 
-                var aMenu = $("<a>" , { text: "Click Here To See Menu" , href: restaurantMenu})
                 
-                var newRestDiv = $("<a>").addClass("item").append(h4Name,pAddress,pType, aMenu);
+                var newRestDiv = $("<a>").addClass("item").append(h4Name,pAddress,pType).attr("href", restaurantMenu).attr("target", "_blank");
                 $("#restaurant-list").append(newRestDiv);
 
                 //create marker on map

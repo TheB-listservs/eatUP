@@ -50,7 +50,7 @@ console.log("group ID: ", groupID);
 //====================Initialize Map==========================
 //==============================================================
 function initMap() {
-    var chicago = {lat: 41.896, lng: -87.621};
+    var chicago = { lat: 41.896, lng: -87.621 };
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
         center: chicago
@@ -61,14 +61,14 @@ function initMap() {
     // });
 
     centerMarker = new google.maps.Marker({
-            map: map,
-            icon: "./assets/images/marker-images/icons8-hunt-40.png"
-        });
-    
+        map: map,
+        icon: "./assets/images/marker-images/icons8-hunt-40.png"
+    });
+
     var bounds = new google.maps.LatLngBounds();
     //create blank marker for each restaurant
     //location to be populated above once zomato retrieves values 
-    function createMarker(coords){
+    function createMarker(coords) {
         newMarker = new google.maps.Marker({
             map: map,
             position: coords,
@@ -80,22 +80,22 @@ function initMap() {
     }
     function attachMessage(marker, message) {
         var infowindow = new google.maps.InfoWindow({
-          content: message
+            content: message
         });
 
-        marker.addListener('mouseover', function() {
-          infowindow.open(marker.get('map'), marker);
+        marker.addListener('mouseover', function () {
+            infowindow.open(marker.get('map'), marker);
         });
-        marker.addListener('mouseout', function() {
-          infowindow.close(marker.get('map'), marker);
+        marker.addListener('mouseout', function () {
+            infowindow.close(marker.get('map'), marker);
         });
     }
-    
+
     //------------------Grab User Locations to Find Center-----------------
     // create ref for firebase that starts at the users node within the current group
     var queryRef = "groups/" + groupID + "/users";
     //grab snapshot of the users in the current group
-    database.ref(queryRef).orderByKey().on("value", function(snapshot) {
+    database.ref(queryRef).orderByKey().on("value", function (snapshot) {
         console.log("Firebase *Value* Event Handler")
         console.log(snapshot.val());
         var users = snapshot.val();
@@ -129,8 +129,8 @@ function initMap() {
         var centerLng = centerLocation.lng;
         //set center marker position
         centerMarker.setPosition(centerLocation);
-        attachMessage(centerMarker,"This is the center location for your group")
-        
+        attachMessage(centerMarker, "This is the center location for your group")
+
         //------------------Submit Center Location to Zamato API to find resuarants-----------------
 
         $.ajax({
@@ -150,26 +150,37 @@ function initMap() {
                 var restaurantMenu = response.nearby_restaurants[i].restaurant.menu_url;
                 var restaurantLat = parseFloat(response.nearby_restaurants[i].restaurant.location.latitude);
                 var restaurantLng = parseFloat(response.nearby_restaurants[i].restaurant.location.longitude);
-                
-                var h4Name = $("<h4>").html((i+1)+") "+restaurantName).addClass("ui header"); 
-                var pAddress = $("<p>").html(restaurantAddress);  
-                var pType = $("<p>").html(restaurantType); 
-                
-                var newRestDiv = $("<a>").addClass("item").append(h4Name,pAddress,pType).attr("href", restaurantMenu).attr("target", "_blank");
-                $("#restaurant-list").append(newRestDiv);
+
+                var h4Name = $("<h4>").html((i + 1) + ") " + restaurantName).addClass("ui header");
+                var pAddress = $("<p>").html(restaurantAddress);
+                var pType = $("<p>").html(restaurantType);
+
+                var parentRestDiv = $("<div>").addClass("item");
+                var newRestDiv = $("<a>").append(h4Name, pAddress, pType).attr("href", restaurantMenu).attr("target", "_blank");
+                parentRestDiv.append(newRestDiv);
+                $("#restaurant-list").append(parentRestDiv);
+
+                // upvote/down vote button
+                var upvoteDiv = $("<div>").addClass("vote roundrect").attr("data-vote", "none");
+                var incrementUp = $("<div>").addClass("increment up");
+                var incrementDown = $("<div>").addClass("increment down");
+                var countDiv = $("<div>").addClass("count").html("0");
+                upvoteDiv.append(incrementUp, incrementDown, countDiv);
+
+                parentRestDiv.append(upvoteDiv);
 
                 //create marker on map
                 var location = {
                     lat: restaurantLat,
                     lng: restaurantLng
                 }
-                
+
                 var newMarker = createMarker(location);
                 //newMarker.setTitle(restaurantName);
                 //newMarker.setLabel((i+1).toString());
 
-                var windowText = "<h4>"+restaurantName+"</h4>"+restaurantAddress+"<br>"+restaurantType;
-                attachMessage(newMarker,windowText);
+                var windowText = "<h4>" + restaurantName + "</h4>" + restaurantAddress + "<br>" + restaurantType;
+                attachMessage(newMarker, windowText);
 
                 bounds.extend(location)
             }
@@ -180,30 +191,30 @@ function initMap() {
         //------------------Put List of Users into Group Members div----------------
         userMarkerArray = [];
         $("#group-member-list").empty();
-        for(i=0; i<usersArray.length;i++){
-            var newMemberDiv = $("<a>").addClass("item").html(usersArray[i].name).attr("data-marker-index",i).attr("data-marker-hidden", false);
+        for (i = 0; i < usersArray.length; i++) {
+            var newMemberDiv = $("<a>").addClass("item").html(usersArray[i].name).attr("data-marker-index", i).attr("data-marker-hidden", false);
             $("#group-member-list").append(newMemberDiv);
             var memberMarker = createMarker(usersArray[i].location);
             memberMarker.setIcon("./assets/images/marker-images/icons8-street-view-filled-50.png");
-            attachMessage(memberMarker,usersArray[i].name);
+            attachMessage(memberMarker, usersArray[i].name);
             userMarkerArray.push(memberMarker);
         }
 
-    
+
     }); //end of databse ref on value function
 
-    $("#group-member-list").on("click", ".item", function(){
+    $("#group-member-list").on("click", ".item", function () {
         console.log("you clicked a member")
         var index = $(this).attr("data-marker-index");
         console.log(index);
 
         var isHidden = $(this).attr("data-marker-hidden");
         console.log(isHidden)
-        if(isHidden == "true"){
+        if (isHidden == "true") {
             console.log("in if (true)")
             userMarkerArray[index].setMap(map);
             $(this).attr("data-marker-hidden", false);
-        }else{
+        } else {
             console.log("in else (false)")
             userMarkerArray[index].setMap(null);
             $(this).attr("data-marker-hidden", true);
@@ -214,12 +225,12 @@ function initMap() {
 
 
 //find center funciton
-function findCenter(locations){
+function findCenter(locations) {
     console.log("In findCenter Function")
     var latSum = 0;
     var lngSum = 0;
     var qty = 0;
-    for(var i = 0; i < locations.length; i++){
+    for (var i = 0; i < locations.length; i++) {
 
         latSum += locations[i].lat;
         lngSum += locations[i].lng;
@@ -227,16 +238,52 @@ function findCenter(locations){
     }
     console.log("findCenter latSum: ", latSum);
     console.log("findCenter lngSum: ", lngSum);
-    var latAvg = latSum/qty;
-    var lngAvg = lngSum/qty;
+    var latAvg = latSum / qty;
+    var lngAvg = lngSum / qty;
     console.log("findCenter lat: ", latAvg);
     console.log("findCenter lng: ", lngAvg);
     var center = {
         lat: latAvg,
         lng: lngAvg
     }
-    console.log("findCenter center: ",center);
+    console.log("findCenter center: ", center);
     return center;
     console.log("end find cneter function")
 }
+//counter fucntion
+$(function () {
+    $(document).on("click", ".increment", function () {
+        var count = parseInt($("~ .count", this).text());
+        var status = $(this).parent().attr("data-vote");
+        if ($(this).hasClass("up")) {
+
+            if ((status === "none")) {
+                $(this).parent().attr("data-vote", "up");
+                var count = count + 1;
+                $("~ .count", this).text(count);
+            } else if ((status === "down")) {
+                $(this).parent().attr("data-vote", "up");
+                var count = count + 2;
+                $("~ .count", this).text(count);
+            }
+
+        } else {
+            if ((status === "none")) {
+                $(this).parent().attr("data-vote", "down");
+                var count = count - 1;
+                $("~ .count", this).text(count);
+            } else if ((status === "up")) {
+                $(this).parent().attr("data-vote", "down");
+                var count = count - 2;
+                $("~ .count", this).text(count);
+            }
+        }
+
+        $(this).parent().addClass("bump");
+
+        setTimeout(function () {
+            $(this).parent().removeClass("bump");
+        }, 400);
+    });
+});
 

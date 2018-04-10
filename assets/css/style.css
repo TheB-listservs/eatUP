@@ -28,6 +28,13 @@ h2 {
     margin: auto
 }
 
+#restaurant-list .item{
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap: nowrap; 
+    justify-content: space-between; 
+}
+
 .button {
     position: absolute;
     bottom:20px;
@@ -70,3 +77,86 @@ h2 {
     widows: 202px;
     z-index: 1;
 }
+
+.roundrect .up {
+    border-radius: 2rem 2rem 0 0;
+  }
+  .roundrect .down {
+    border-radius: 0 0 2rem 2rem;
+  }
+  .roundrect .count {
+    border-radius: .5rem .5rem;
+  }
+  
+  .vote {
+    font-family: "Noto Sans";
+    position: relative;
+    width: 4rem;
+    height: 4rem;
+    margin: 1rem;
+  }
+  
+  .increment {
+    flex: 1 0 0;
+    text-align: center;
+    opacity: .5;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  .increment.up {
+    background:blue;
+    height: 50%;
+    margin-bottom: 0.25rem;
+  }
+  .increment.down {
+    background:black;
+    height: 50%;
+  }
+  .increment:hover {
+    opacity: 1;
+  }
+  
+  .count {
+    position: absolute;
+    top: 0;
+    border-radius: 0.1rem;
+    margin-top: 30px; 
+    margin-left: 14px; 
+    background: #F6F3E4;
+    width: 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1px; 
+    text-align: center;
+    box-shadow: 0 0 0 0.5rem #F6F3E4;
+    pointer-events: none;
+  }
+  .count.upvoted {
+    color: #4BC35F;
+  }
+  .count.downvoted {
+    color: #C15044;
+  }
+  
+  .bump {
+    -webkit-animation: bump 200ms;
+            animation: bump 200ms;
+  }
+  
+  @-webkit-keyframes bump {
+    30% {
+      -webkit-transform: scale(1.2);
+              transform: scale(1.2);
+    }
+  }
+  
+  @keyframes bump {
+    30% {
+      -webkit-transform: scale(1.2);
+              transform: scale(1.2);
+    }
+  }
+  * {
+    box-sizing: border-box;
+  }
+  

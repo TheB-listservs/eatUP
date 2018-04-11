@@ -32,20 +32,22 @@
         <div id="map" class="ui map"></div>
 
   <!-- RESULTS -->
-  <div id="restaurant-list" class="ui left fixed vertical menu">
-  </div>
+      <div id="restaurant-list" class="ui left fixed vertical menu" data-show="true">
+        <div id="restaurants-toggle" class="item">
+          <b>Restaurants</b>
+        </div>
+        <div id="restaurant-list-content"></div>
+      </div>
 
-    <div id="sidebar" div class="ui right fixed vertical menu">
-        <div class="item">
+      <div id="sidebar" div class="ui right fixed vertical menu" data-show="true">
+        <div id="group-memebers-toggle" class="item">
           <b>Group Members</b>
         </div>
-        <div id="group-member-list">
-          <a class="item">Name1</a>
-          <a class="item">Name2</a>
-          <a class="item">Name3</a>
-            </div>
-        </div>
+        <div id="group-member-list"></div>
+      </div>
+
     </div>
+      
 
   <!-- Google maps -->
   <script async defer

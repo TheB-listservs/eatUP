@@ -45,18 +45,20 @@ $("#submit-button").on("click", function () {
     var selectedGroupId = $("#group-menu").find(":selected").attr("data-id") 
     var selectedGroupName = $("#group-menu").find(":selected").html();
     
+    //make sure that username was entered, otherwise return
     if (!enteredUserName) {
         console.log("no name entered");
         return;
     }
-    
+
+    //push username to firebase under the selected group node, save the key as "userID"
     var newRef = "groups/" + selectedGroupId + "/users";
     var user = database.ref(newRef).push({
         name: enteredUserName
     });
     userID = user.key;
 
-    //set User ID and Group ID to Local storage
+    //set User ID and Group ID to session storage
     sessionStorage.setItem("storage-userName", enteredUserName);
     sessionStorage.setItem("storage-userID", userID);
     sessionStorage.setItem("storage-groupID", selectedGroupId);

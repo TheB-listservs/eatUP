@@ -20,6 +20,7 @@ var database = firebase.database();
 //==================================================
 var coords;
 
+//pull user and group names and IDs from session storage
 var userID = sessionStorage.getItem("storage-userID");
 var userName = sessionStorage.getItem("storage-userName");
 var groupID = sessionStorage.getItem("storage-groupID");
@@ -61,49 +62,39 @@ function initAutocomplete() {
         searchBox.setBounds(map.getBounds());
     });
     
-    // var markers = [];
 
     // Maps Search Box
-    // Listen for the event fired when the user selects a prediction and retrieve
-    // more details for that place.
+    // Listen for the event fired when the user submits a search
     searchBox.addListener('places_changed', function() {
         console.log("EVENT: you entered something in the searchbox!")
+        
         var places = searchBox.getPlaces();
-
         if (places.length == 0) {
             return;
         }
         console.log("Search Result (places): ", places);
         console.log("# of Results (places.length): ", places.length);
-        // Clear out the old markers.
-        // markers.forEach(function(marker) {
-        //     marker.setMap(null);
-        // });
-        // markers = [];
-
-        // For each place, get the icon, name and location.
+        //the getPlaces() event will return an array of places that match the serach terms entered
+        //  -if an address is added, there is typically only one locaiton in the result array
+        //  -if a more generic term (e.g. cafe) is entered, the result will return multiple locations
+        //  ---for our purposes we will only take the first result
+        var searchResult = places[0];
+        // setting bounds of map based on search result
         var bounds = new google.maps.LatLngBounds();
-        places.forEach(function(place) {
-            if (!place.geometry) {
-                console.log("Returned place contains no geometry");
-                return;
-            }
-            // Create a marker for each place.
-            // markers.push(new google.maps.Marker({
-            //     map: map,
-            //     title: place.name,
-            //     position: place.geometry.location
-            // }));
-            if (place.geometry.viewport) {
-                // Only geocodes have viewport.
-                bounds.union(place.geometry.viewport);
-                } else {
-                bounds.extend(place.geometry.location);
-            }
-        });
-        myMarker.setPosition(places[0].geometry.location)
-        coords = places[0].geometry.location;
+        if (!searchResult.geometry) {
+            console.log("Returned place contains no geometry");
+            return;
+        }
+        if (searchResult.geometry.viewport) {
+            // Only geocodes have viewport.
+            bounds.union(searchResult.geometry.viewport);
+            } else {
+            bounds.extend(searchResult.geometry.location);
+        }
         map.fitBounds(bounds);
+        //------------------------------------------------------
+        myMarker.setPosition(searchResult.geometry.location)
+        coords = searchResult.geometry.location;
         console.log("Chosen Lat/Lng: ",myMarker.getPosition().lat(),myMarker.getPosition().lng())
         
     });
@@ -129,7 +120,7 @@ $("#submit-button").on("click", function(){
     console.log("EVENT: you clicked submit!");
     console.log("groupID: ", groupID)
     console.log("coords: ",coords)
-    //if for some reason, the group ID is null (usually during development, when we haven't gone through the add or join gorup pages) then return
+    //if for some reason, the group ID is null (usually during development, when we haven't gone through the add or join group pages) then return
     if(!groupID){
         console.log("No group ID, can't submit");
         return;
@@ -139,6 +130,7 @@ $("#submit-button").on("click", function(){
         console.log("Please Select a location before submitting");
         return;
     }
+    //push location to firebase under the selected group and user node
     var newRef = "groups/" + groupID + "/users/" + userID;
     var coordsString = JSON.stringify(coords);
     database.ref(newRef).update({
@@ -148,54 +140,3 @@ $("#submit-button").on("click", function(){
     //Go to page 4
     location.href = "./index4.html";
 });
-
-//==============================================================
-//====================Database Query==========================
-//===================for page 4==========================
-//==============================================================
-// var queryRef = "groups/" + groupID + "/users";
-// var locationArray = [];
-// database.ref(queryRef).orderByKey().on("child_added", function(snapshot) {
-//     console.log(snapshot.val());
-    
-//     console.log(snapshot.val().name);
-//     console.log(snapshot.val().location);
-//     var locationObj = snapshot.val().location;
-//     var coords = JSON.parse(locationObj);
-//     console.log(coords);
-//     console.log(coords.lat)
-//     locationArray.push(coords);
-
-//     var centerLocation = findCenter(locationArray);
-//     centerMarker.setPosition(centerLocation);
-
-    
-// });
-
-
-// function findCenter(locations){
-//     console.log("in findCenter function")
-//     console.log("findCenter: ", locations)
-//     var latSum = 0;
-//     var lngSum = 0;
-//     var qty = 0;
-//     for(var i = 0; i < locations.length; i++){
-
-//         latSum += locations[i].lat;
-//         lngSum += locations[i].lng;
-//         qty++;
-//     }
-//     console.log("findCenter latSum: ", latSum);
-//     console.log("findCenter lngSum: ", lngSum);
-//     var latAvg = latSum/qty;
-//     var lngAvg = lngSum/qty;
-//     console.log("findCenter lat: ", latAvg);
-//     console.log("findCenter lng: ", lngAvg);
-//     var center = {
-//         lat: latAvg,
-//         lng: lngAvg
-//     }
-//     console.log(center);
-//     return center;
-
-// }

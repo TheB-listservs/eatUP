@@ -33,7 +33,7 @@ h2 {
   margin: auto
 }
 
-#restaurant-list.item {
+#restaurant-list .item {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -87,7 +87,7 @@ h2 {
   z-index: 1;
 }
 
-#restaurant-list {
+#restaurant-list, #sidebar {
   top:35.32px;
 }
 

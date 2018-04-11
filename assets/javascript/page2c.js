@@ -37,7 +37,7 @@ $("#submit-button").on("click", function () {
     var selectedGroupId = $("#group-menu").find(":selected").attr("data-id");
     var selectedGroupName = $("#group-menu").find(":selected").html();
 
-    //set Group ID to Local storage
+    //set Group ID to session storage
     sessionStorage.setItem("storage-groupID", selectedGroupId);
     sessionStorage.setItem("storage-groupName", selectedGroupName);
 

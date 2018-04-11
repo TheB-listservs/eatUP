@@ -27,23 +27,29 @@ var userID;
 $("#submit-button").on("click", function () {
     event.preventDefault();
     console.log("you clicked submit!");
+
+    //save entered username and group name as variables
     var enteredUserName = $("#name").val();
     var enteredGroupName = $("#group-name").val();
+
+    //make sure that username was entered, otherwise return
     if (!enteredUserName) {
         console.log("no name entered");
         return;
     }
+    //make sure that group name was entered, otherwise return
     if (!enteredGroupName) {
         console.log("no group name entered");
         return;
     }
 
+    //push group to firebase under "/groups" node, and save key as "groupID"
     var newPush = database.ref("/groups").push({
         groupName: enteredGroupName
     })
     var groupID = newPush.key;
+    //push username to firebase under the new group node, save the key as "userID"
     var newRef = "/groups/" + groupID + "/users";
-
     var user = database.ref(newRef).push({
         name: enteredUserName
     });
@@ -51,7 +57,7 @@ $("#submit-button").on("click", function () {
     console.log("my user id:", userID);
     console.log("your group id is: ", groupID);
 
-    //set User ID and Group ID to Local storage
+    //set User ID and Group ID to session storage
     sessionStorage.setItem("storage-userName", enteredUserName);
     sessionStorage.setItem("storage-groupName", enteredGroupName);
     sessionStorage.setItem("storage-userID", userID);
@@ -59,6 +65,5 @@ $("#submit-button").on("click", function () {
 
     //Go to page 3
     location.href = "./index3.html";
-    //location.href = "./backend-page3.html";
 
 });
